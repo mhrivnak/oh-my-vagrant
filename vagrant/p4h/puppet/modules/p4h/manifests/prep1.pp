@@ -22,7 +22,7 @@ class p4h::prep1() {
 	file { '/root/README':
 		content => "##prep1
 For this lesson, please do the following:
-* should try installing the 'cowsay' package with puppet.
+* should try installing the 'dstat' package with puppet.
 
 Bonus:
 * Install three different packages, in three lines of code
@@ -31,7 +31,13 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        package { 'dstat':
+                ensure => installed,
+        }
+        package { 'mod_ldap': ensure => installed }
+        package { 'mod_auth_kerb': ensure => installed }
+        package { 'mod_auth_openid': ensure => installed }
+        package { [ 'mod_nss', 'mod_ssl', 'mod_wsgi' ]: ensure => installed }
 
 }
 
