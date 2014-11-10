@@ -45,7 +45,35 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        exec { "mkdir1":
+                command => "mkdir -p /root/foo1",
+                path => "/bin:/usr/bin",
+                onlyif => "test ! -d /root/foo1", 
+        }
+
+        exec { "mkdir2":
+                command => "mkdir -p /root/foo2",
+                path => "/bin:/usr/bin",
+                unless => "test -d /root/foo2", 
+        }
+
+        exec { "touch1":
+                command => "touch /root/foo3",
+                path => "/bin:/usr/bin",
+                creates => "/root/foo3",
+        }
+
+        # not sure why this comes up empty, but the next exec does about the
+        # same thing. I'm not sure if you wanted to have the shell in puppet
+        # programatically, or if writing it to a file is sufficient
+        $foundshell = inline_template("<%= ENV['SHELL'] -%>")
+        notify { "shell: ${foundshell}": }
+
+        exec { "myshell":
+                command => "echo $0 > /myshell",
+                path => "/bin:/usr/bin",
+                creates => "/myshell",
+        }
 
 }
 
