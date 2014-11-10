@@ -38,8 +38,14 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
-
+        $myname = "Michael"
+        $moretext = "My name is ${myname}"
+        if $name == "james" {
+                notify { "different" : }
+        }
+        else {
+                notify { "${myname}: ${moretext}": }
+        }
 }
 
 # vim: ts=8
