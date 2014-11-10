@@ -38,7 +38,20 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        $simple = inline_template("hostname: <%= @hostname -%>")
+        notify { $simple: }
+
+        $foo = "foo"
+        $bar = "bar"
+
+        $foobar = inline_template("<%= @foo -%><%= @bar -%>")
+
+        file { "/myfile":
+                content => template("p4h/sth.erb"),
+                ensure => file,
+        }
+
+        $now = inline_template("<%= Time.now.utc -%>")
 
 }
 
