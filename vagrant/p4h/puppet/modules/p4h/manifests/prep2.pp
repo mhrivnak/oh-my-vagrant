@@ -32,7 +32,16 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+	user { 'mhrivnak':
+                ensure => present,
+                managehome => true,
+        }
+
+        file { '/home/mhrivnak/joke':
+                ensure => file,
+                require => User['mhrivnak'],
+                content => "Why is 6 afraid of 7? Because 7 ate 9.",
+        }
 
 }
 
