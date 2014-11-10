@@ -42,7 +42,20 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        p4h::typeA {"foo":
+                filename => "foo",
+                before => p4h::typeA["bar"],
+        }
+        p4h::typeA {"bar":
+                filename => "bar",
+        }
+
+        p4h::typeB {"foo":
+                filename => "foo",
+        }
+        p4h::typeB {"bar":
+                filename => "bar",
+        }
 
 }
 
