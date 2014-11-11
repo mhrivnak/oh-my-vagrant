@@ -37,8 +37,26 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        cron { foo:
+                command => "/usr/bin/touch /tmp/lesson1",
+                user => "root",
+                minute => "*/1",
+        }
 
+        file { "/root/foo":
+                ensure => "directory",
+        }
+
+        file { "/root/foo/bar":
+                ensure => "present",
+                content => "hi",
+                require => File["/root/foo"],
+        }
+
+        host { "host1":
+                name => "host1",
+                ip => "127.0.0.1",
+        }
 }
 
 # vim: ts=8
