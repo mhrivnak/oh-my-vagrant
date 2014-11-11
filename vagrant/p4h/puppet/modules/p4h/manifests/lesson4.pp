@@ -45,6 +45,7 @@ Happy hacking!\n",
         define sayhi {
             notify { "Hello ${name}":}
         }
+
         sayhi{$names:}
 
         $messages = inline_template("\n<% for @item in @names %>Hello <%= @item %>\n<% end %>")

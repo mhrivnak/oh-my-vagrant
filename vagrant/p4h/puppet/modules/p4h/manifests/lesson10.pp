@@ -17,6 +17,8 @@
 
 # README: this is a module built for use with: Oh My Vagrant!
 
+import "common"
+
 class p4h::lesson10() {
 
 	file { '/root/README':
@@ -32,7 +34,19 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        # I am guessing at this since there are no usage docs
+
+        $foo = "/tmp/foo"
+        $foofrags = "/tmp/foofrags/"
+
+        whole { $foo:
+                dir => $foofrags,
+        }
+
+        frag { 
+                content => "hi",
+        }
+
 
 }
 

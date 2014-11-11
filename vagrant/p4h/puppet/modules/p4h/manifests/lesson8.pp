@@ -44,7 +44,29 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        $x = "/tmp/lesson8/"
+
+        file { $x:
+                ensure => directory,
+                recurse => true,
+                purge => true,
+                force => true,
+        }
+
+        #file { "${x}foo":
+                #ensure => present,
+        #}
+
+        $people = ["Bo", "Sue", "Pete"]
+        $name_length_yaml = inline_template("<%= @people.map{|name| name.length.to_s}.to_yaml %>")
+        $name_lengths = parseyaml($name_length_yaml)
+
+
+        define myprinter {
+                notify { "name length: ${name}": }
+        }
+
+        myprinter { $name_lengths: }
 
 }
 

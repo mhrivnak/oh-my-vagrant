@@ -38,7 +38,19 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        define user (
+                $email,
+        ) {
+                alias => [$name, $email],
+        }
+
+        $x = user { "bob":
+                email => "bob@example.com",
+        }
+        $y = user { "joe":
+                email => "joe@example.com",
+        }
+        
 
 }
 
