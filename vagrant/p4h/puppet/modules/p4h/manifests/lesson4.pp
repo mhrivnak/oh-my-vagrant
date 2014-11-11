@@ -40,8 +40,15 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        $names = ["Bob", "Fred", "Alice"]
 
+        define sayhi {
+            notify { "Hello ${name}":}
+        }
+        sayhi{$names:}
+
+        $messages = inline_template("\n<% for @item in @names %>Hello <%= @item %>\n<% end %>")
+        notify { $messages: }
 }
 
 # vim: ts=8

@@ -37,8 +37,10 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
-
+        $x = regsubst("abc", "b", "B", "G")
+        notice($x) # runs on master, whereas notify runs on client
+        $y = sha1("hi")
+        notice($y)
 }
 
 # vim: ts=8

@@ -32,7 +32,13 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        $a = ['a', 'b']
+        $b = ['c', 'd']
+        $c = concat($a, $b)
+        notify { $c: }
+
+        $d = count($c)
+        notify { $d: }
 
 }
 
