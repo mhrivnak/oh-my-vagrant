@@ -41,7 +41,12 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        include common::again
+
+        exec { "/bin/true":
+                onlyif => "/usr/bin/test ! -f /tmp/plzstop",
+                notify => Exec['again'],
+        }
 
 }
 
