@@ -45,8 +45,10 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        include p4h::params
 
+        notify { "family: ${osfamily}": }
+        notify { "foo: ${::p4h::params::foo17}": }
 }
 
 # vim: ts=8

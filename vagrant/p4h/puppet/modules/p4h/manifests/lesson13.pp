@@ -46,7 +46,14 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        @@file { "/root/${hostname}":
+                ensure => present,
+                content => "hi",
+                tag => "magic",
+        }
+
+        File <<| tag == "magic" |>> {
+        }
 
 }
 
